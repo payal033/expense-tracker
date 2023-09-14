@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./ExpenseForm.css";
 
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
   // using multiple states
   const [enteredtitle, setTitle] = useState("");
   const [enteredamount, setAmount] = useState("");
@@ -14,26 +14,26 @@ const ExpenseForm = () => {
     date: "",
   });
 
-  const titleChangeHandler = (event) => {
-    // updating state that depends on prev state - better way - use function form
-    setUserInput((prevState) => {
-      return { ...prevState, enteredtitle: event.target.value };
-    });
-  };
+  // const titleChangeHandler = (event) => {
+  //   // updating state that depends on prev state - better way - use function form
+  //   setUserInput((prevState) => {
+  //     return { ...prevState, enteredtitle: event.target.value };
+  //   });
+  // };
 
-  const amountHandler = (event) => {
-    setUserInput({
-      ...userInput,
-      enteredamount: event.target.value,
-    });
-  };
+  // const amountHandler = (event) => {
+  //   setUserInput({
+  //     ...userInput,
+  //     enteredamount: event.target.value,
+  //   });
+  // };
 
-  const dateHandler = (event) => {
-    setUserInput({
-      ...userInput,
-      entereddate: event.target.value,
-    });
-  };
+  // const dateHandler = (event) => {
+  //   setUserInput({
+  //     ...userInput,
+  //     entereddate: event.target.value,
+  //   });
+  // };
 
   // shared handler function instead of multiple handler functions
   const inputChangeHandler = (identifier, value) => {
@@ -54,7 +54,7 @@ const ExpenseForm = () => {
       date: new Date(entereddate),
     };
 
-    console.log(expenseData);
+    props.onSaveExpenseData(expenseData);
     setTitle("");
     setDate("");
     setAmount("");
