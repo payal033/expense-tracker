@@ -7,34 +7,6 @@ const ExpenseForm = (props) => {
   const [enteredamount, setAmount] = useState("");
   const [entereddate, setDate] = useState("");
 
-  // using only one state
-  const [userInput, setUserInput] = useState({
-    enteredtitle: "",
-    amount: "",
-    date: "",
-  });
-
-  // const titleChangeHandler = (event) => {
-  //   // updating state that depends on prev state - better way - use function form
-  //   setUserInput((prevState) => {
-  //     return { ...prevState, enteredtitle: event.target.value };
-  //   });
-  // };
-
-  // const amountHandler = (event) => {
-  //   setUserInput({
-  //     ...userInput,
-  //     enteredamount: event.target.value,
-  //   });
-  // };
-
-  // const dateHandler = (event) => {
-  //   setUserInput({
-  //     ...userInput,
-  //     entereddate: event.target.value,
-  //   });
-  // };
-
   // shared handler function instead of multiple handler functions
   const inputChangeHandler = (identifier, value) => {
     if (identifier === "title") {
@@ -97,6 +69,9 @@ const ExpenseForm = (props) => {
         </div>
       </div>
       <div className="new-expense__actions">
+        <button type="button" onClick={props.onDismiss}>
+          Cancel
+        </button>
         <button type="submit">Add Expense</button>
       </div>
     </form>
